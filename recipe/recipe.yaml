@@ -1,8 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
 schema_version: 1
 
 context:
   name: airfly
-  version: 1.1.0
+  version: "1.1.0"
 
 package:
   name: ${{ name|lower }}
@@ -26,7 +27,7 @@ requirements:
     - pdm-backend
     - pip
   run:
-    - python >=${{ python_min }}
+    - python >=${{ python_min }},<4.0
     - attrs
     - cattrs
     - regex
@@ -43,6 +44,7 @@ tests:
       imports:
         - airfly
       python_version: ${{ python_min }}.*
+      pip_check: true
   - requirements:
       run:
         - pip
